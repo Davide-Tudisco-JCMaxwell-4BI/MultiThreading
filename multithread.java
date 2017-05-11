@@ -57,13 +57,13 @@ public class multithread {
 class TicTacToe implements Runnable {
     
     // non essesndo "static" c'e' una copia delle seguenti variabili per ogni THREAD 
-    private String t; //dichiarazione variabile
-    private String msg; //dichiarazione variabile
-    public static int contatore = 0; //contatore conta quante volte il thread TOE viene dopo TAC
+    private String t; //dichiarazione variabile t (thread)
+    private String msg; //dichiarazione variabile msg (nome del thread)
+    public static int contatore = 0; //contatore conta quante volte il thread TOE viene dopo TAC, lo impostiamo inizialmente a 0
     public static boolean c = false; //se il thread ÃƒÂ¨ TAC diventa true mentre se ÃƒÂ¨ altro ÃƒÂ¨ False
     // Costruttore, possiamo usare il costruttore per passare dei parametri al THREAD
     public TicTacToe (String s) {
-        this.t = s; //assegno s a t
+        this.t = s; //assegno la stringa s a t (thread)
     }
     
     @Override // Annotazione per il compilatore
@@ -75,20 +75,20 @@ class TicTacToe implements Runnable {
         for (int i = 10; i > 0; i--) 
         {           
             if("TAC".equals(t)) //verifico che TAC sia uguale a t
-                c = true;
+                c = true; // se e vero, imposto c a true (vero)
                 
             msg = "<" + t + "> "; //assegno a msg il testo
             int casuale=100+(int)(Math.random()*300); //Tempo casuale tra 100 e 300 millisecondi
              try {
                 TimeUnit.MILLISECONDS.sleep(casuale); 
             } catch (InterruptedException e) {} //possibile eccezione
-            if("TOE".equals(t) && c == true) //verifico che TOE sia uguale a t e che c sia true
+            if("TOE".equals(t) && c == true) //verifico che TOE sia uguale a t e che c sia true (vero)
                 contatore++; //incremento di 1 il contatore
             else
-                c = false; //assegno false a c
-            msg += t + ": " + i; //sommo t a msg ogni volta che ciclo
+                c = false; //imposto c a false (falso)
+            msg += t + ": " + i; //sommo t (thread) a msg ogni volta che ciclo
             
-            System.out.println(msg); //visualizzo il messaggio di output
+            System.out.println(msg); //visualizzo il messaggio di output (nome del thread)
         }
     
     }
